@@ -1,0 +1,89 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<body>
+    <div class="bg-overlay"></div>
+
+    <main class="form-container">
+        <header>
+            <div class="logo-area">
+                <i class="fa-solid fa-spa"></i> </div>
+            <h2>Aura Advance</h2>
+            <p class="slogan">Take a moment to care for yourself.</p>
+        </header>
+
+        <form>
+            <div class="input-group">
+                <label for="nome"><i class="fa-solid fa-user"></i> Nome Completo</label>
+                <input type="text" id="nome" name="nome" placeholder="Ex: Maria Oliveira" required>
+            </div>
+
+            <div class="input-group">
+                <label for="tel"><i class="fa-brands fa-whatsapp"></i> WhatsApp/Telefone</label>
+                <input type="tel" id="tel" name="tel" placeholder="(11) 99999-9999" required>
+            </div>
+
+            <div class="input-group">
+                <label for="servico"><i class="fa-solid fa-sparkles"></i> Procedimento</label>
+                <select id="servico" name="servico" required>
+                    <option value="" disabled selected>O que deseja realizar?</option>
+                    <option value="limpeza">Limpeza de Pele Profunda</option>
+                    <option value="botox">Aplicação de Botox</option>
+                    <option value="drenagem">Drenagem Linfática</option>
+                    <option value="massagem">Massagem Relaxante</option>
+                    <opition value="outros">Outros</opition>
+                </select>
+            </div>
+
+            <div class="row">
+                <div class="input-group">
+                    <label for="data"><i class="fa-solid fa-calendar-days"></i> Data</label>
+                    <input type="date" id="data" name="data" required>
+                </div>
+                <div class="input-group">
+                    <label for="hora"><i class="fa-solid fa-clock"></i> Horário</label>
+                    <input type="time" id="hora" name="hora" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="msg">Dúvidas ou Observações</label>
+                <textarea id="msg" name="msg" rows="2" placeholder="Conte-nos sua necessidade..."></textarea>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="lgpd" required>
+                <label for="lgpd">Concordo com o processamento dos meus dados para fins de agendamento.</label>
+            </div>
+
+            <button type="submit" class="btn-submit">
+                <span>Solicitar Agendamento</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </form>
+    </main>
+    <script>
+    const form = document.querySelector('form');
+    const btnSubmit = document.querySelector('.btn-submit');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); 
+
+       
+        btnSubmit.innerHTML = '<span>Enviando...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
+        btnSubmit.style.opacity = '0.7';
+        btnSubmit.style.cursor = 'not-allowed';
+
+        
+        setTimeout(() => {
+            document.querySelector('.form-container').innerHTML = `
+                <div style="text-align: center; padding: 40px; animation: fadeInUp 0.5s ease;">
+                    <i class="fa-solid fa-circle-check" style="font-size: 4rem; color: #8a8660; margin-bottom: 20px;"></i>
+                    <h2 style="margin-bottom: 10px;">Pedido Recebido!</h2>
+                    <p style="color: #666; margin-bottom: 25px;">Obrigado por escolher a Aura Advance . Em breve entraremos em contato via WhatsApp para confirmar seu horário.</p>
+                    <button onclick="window.location.reload()" class="btn-submit" style="width: auto; padding: 12px 25px; margin: 0 auto;">Novo Agendamento</button>
+                </div>
+            `;
+        }, 2000);
+    });
+</script>
+</body>
